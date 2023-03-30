@@ -1,15 +1,21 @@
 import React from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import NavbarComponent from "./components/NavbarComponent";
 
 import "./App.css";
+import NavbarComponent from "./components/NavbarComponent";
 import SearchBar from "./components/SearchBarComponent";
 import TableComponent from "./components/TableComponent";
 
 function App() {
   return (
     <>
-      <body style={{ backgroundColor: "#200f21" }}>
+      <div
+        style={{
+          backgroundColor: "#200f21",
+          minHeight: "200vh",
+          height: "100%",
+          overflow: "hidden",
+        }}
+      >
         <div style={{ position: "relative", zIndex: 1 }}>
           <NavbarComponent />
           <SearchBar />
@@ -23,7 +29,7 @@ function App() {
           <div id="stars3"></div>
           <div id="stars4"></div>
         </div>
-      </body>
+      </div>
     </>
   );
 }

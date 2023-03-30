@@ -1,16 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import NavbarBrand from "react-bootstrap/NavbarBrand";
 import Navbar from "react-bootstrap/Navbar";
-import NavLink from "react-bootstrap/NavLink";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import Nav from "react-bootstrap/Nav";
 
+import SideBarComponent from "./SideBarComponent";
+
+import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faFilm } from "@fortawesome/free-solid-svg-icons";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 const NavbarComponent = (): JSX.Element => {
+  const [openSidebar, setOpenSidebar] = useState(false);
+
+  const handleSidemenuClose = () => {
+    setOpenSidebar(!openSidebar);
+  };
+
   return (
     <>
       <Navbar sticky="top" bg="dark" variant="dark">
@@ -18,18 +25,30 @@ const NavbarComponent = (): JSX.Element => {
           <NavbarBrand href="#home">
             <FontAwesomeIcon icon={faFilm} /> CineWiz
           </NavbarBrand>
-          <Nav>
-            <NavLink href="#home">Home</NavLink>
-            <NavLink href="#user">
-              My profile&nbsp;&nbsp;
-              <FontAwesomeIcon icon={faUser} />
-            </NavLink>
-            <NavDropdown menuVariant="dark" title="My profile">
-              <NavLink href="#movies2watch">Saved Movies</NavLink>
-            </NavDropdown>
-          </Nav>
+          <Button
+            variant="outline-light"
+            style={{
+              border: "none",
+              fontWeight: "bold",
+            }}
+            onClick={handleSidemenuClose}
+          >
+            {openSidebar ? (
+              <>
+                <FontAwesomeIcon icon={faChevronRight} />
+                <FontAwesomeIcon icon={faChevronRight} />
+              </>
+            ) : (
+              <>
+                <FontAwesomeIcon icon={faChevronLeft} />
+                <FontAwesomeIcon icon={faChevronLeft} />
+              </>
+            )}
+            &nbsp;My stuff&nbsp;
+          </Button>
         </Container>
       </Navbar>
+      <SideBarComponent barPlacement="end" show={openSidebar} />
     </>
   );
 };

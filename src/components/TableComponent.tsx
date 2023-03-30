@@ -10,6 +10,7 @@ import Button from "react-bootstrap/Button";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { faEye as faBorderedEye } from "@fortawesome/free-regular-svg-icons";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as faBorderStar } from "@fortawesome/free-regular-svg-icons";
@@ -70,7 +71,7 @@ const TableComponent = (props: Props) => {
                   border: "none",
                 }}
               >
-                <FontAwesomeIcon size="xl" icon={faEye} />
+                <FontAwesomeIcon size="xl" icon={faBorderedEye} />
               </Button>
             </td>
           </tr>
@@ -81,60 +82,3 @@ const TableComponent = (props: Props) => {
 };
 
 export default TableComponent;
-
-// <tr>
-//             <td>
-//               <FontAwesomeIcon width={"100%"} size="xl" icon={faImage} />
-//             </td>
-//             <td>Scream</td>
-//             <td>
-//               9.7 &nbsp;&nbsp;
-//               <FontAwesomeIcon color="gold" icon={faStar} />
-//             </td>
-//             <td>
-//               <Button variant="outline-light" style={{ border: "none" }}>
-//                 Rate &nbsp;
-//                 <FontAwesomeIcon color="gold" icon={faBorderStar} />
-//               </Button>
-//             </td>
-//             <td>
-//               <Button
-//                 variant="outline-light"
-//                 size="sm"
-//                 className="w-100"
-//                 style={{
-//                   border: "none",
-//                 }}
-//               >
-//                 <FontAwesomeIcon size="xl" icon={faEye} />
-//               </Button>
-//             </td>
-//           </tr>
-//           <tr>
-//             <td>
-//               <FontAwesomeIcon width={"100%"} size="xl" icon={faImage} />
-//             </td>
-//             <td>Jaws</td>
-//             <td>
-//               9.7 &nbsp;&nbsp;
-//               <FontAwesomeIcon color="gold" icon={faStar} />
-//             </td>
-//             <td>
-//               <Button variant="outline-light" style={{ border: "none" }}>
-//                 Rate &nbsp;
-//                 <FontAwesomeIcon color="gold" icon={faBorderStar} />
-//               </Button>
-//             </td>
-//             <td>
-//               <Button
-//                 variant="outline-light"
-//                 size="sm"
-//                 className="w-100"
-//                 style={{
-//                   border: "none",
-//                 }}
-//               >
-//                 <FontAwesomeIcon size="xl" icon={faEye} />
-//               </Button>
-//             </td>
-//           </tr>
