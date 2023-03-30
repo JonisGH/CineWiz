@@ -25,6 +25,8 @@ type Props = {};
 
 const TableComponent = (props: Props) => {
   const [show, setShow] = useState(false);
+  const [searchResultState, setSearchResultState] = useState({});
+  const poster = "/5VTN0pR8gcqV3EPUHHfMGnJYN9L.jpg";
 
   const handleShow = () => {
     setShow(true);
@@ -43,18 +45,35 @@ const TableComponent = (props: Props) => {
             <th></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="text-align-center">
           <tr>
-            <td>
-              <FontAwesomeIcon width={"100%"} size="xl" icon={faImage} />
+            <td style={{ maxHeight: "3rem", maxWidth: "3rem" }}>
+              <img
+                alt="poster"
+                src={"https://image.tmdb.org/t/p/w200" + poster}
+                style={{ maxHeight: "100%", maxWidth: "100%" }}
+              />
             </td>
-            <td>Shawshank redemption</td>
             <td>
-              9.7 &nbsp;&nbsp;
-              <FontAwesomeIcon color="gold" icon={faStar} />
+              <p style={{ padding: "4px 8px", marginTop: "1.9rem" }}>
+                The lord of the rings: The two towers
+              </p>
             </td>
             <td>
-              <Button variant="outline-light" style={{ border: "none" }}>
+              <div style={{ padding: "4px 8px", marginTop: "1.9rem" }}>
+                9.7&nbsp;
+                <FontAwesomeIcon color="gold" icon={faStar} />
+              </div>
+            </td>
+            <td>
+              <Button
+                variant="outline-light"
+                style={{
+                  padding: "4px 8px",
+                  border: "none",
+                  marginTop: "1.9rem",
+                }}
+              >
                 Rate &nbsp;
                 <FontAwesomeIcon color="gold" icon={faBorderStar} />
               </Button>
@@ -66,6 +85,7 @@ const TableComponent = (props: Props) => {
                 className="w-100"
                 onClick={handleShow}
                 style={{
+                  marginTop: "1.9rem",
                   borderRadius: "360px",
                   border: "none",
                 }}
@@ -86,6 +106,7 @@ const TableComponent = (props: Props) => {
                     background: "transparent",
                     color: "white",
                     fontStyle: "italic",
+                    boxShadow: "none",
                   }}
                 >
                   added to favorites
@@ -100,6 +121,7 @@ const TableComponent = (props: Props) => {
                   className="w-100"
                   onClick={handleShow}
                   style={{
+                    marginTop: "1.9rem",
                     borderRadius: "360px",
                     border: "none",
                   }}
@@ -121,6 +143,7 @@ const TableComponent = (props: Props) => {
                       border: "none",
                       color: "white",
                       fontStyle: "italic",
+                      boxShadow: "none",
                     }}
                   >
                     added to watchlist

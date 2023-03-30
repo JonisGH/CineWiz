@@ -50,7 +50,7 @@ const SearchBar = (props: Props) => {
       try {
         axios
           .get(
-            `https://api.themoviedb.org/3/search/keyword?api_key=${TMDB_KEY}&query=${debouncedValue}&page=1`
+            `https://api.themoviedb.org/3/search/movie?api_key=${TMDB_KEY}&query=${debouncedValue}&page=1&include_adult=false`
           )
           .then((res) => {
             setSearchResult(res.data.results);
@@ -61,6 +61,8 @@ const SearchBar = (props: Props) => {
       }
     }
   }, [debouncedValue]);
+
+  console.log(searchResult);
 
   function handleChange(
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>

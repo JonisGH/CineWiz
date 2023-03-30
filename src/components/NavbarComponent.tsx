@@ -21,8 +21,10 @@ const NavbarComponent = (): JSX.Element => {
   return (
     <>
       <Navbar sticky="top" bg="dark" variant="dark">
-        <Container>
-          <NavbarBrand href="#home">
+        <Container
+          style={{ transition: "margin-right .5s", paddingRight: "20px" }}
+        >
+          <NavbarBrand>
             <FontAwesomeIcon icon={faFilm} /> CineWiz
           </NavbarBrand>
           <Button
@@ -47,8 +49,8 @@ const NavbarComponent = (): JSX.Element => {
             &nbsp;My stuff&nbsp;
           </Button>
         </Container>
+        <SideBarComponent barPlacement="end" show={openSidebar} />
       </Navbar>
-      <SideBarComponent barPlacement="end" show={openSidebar} />
     </>
   );
 };
