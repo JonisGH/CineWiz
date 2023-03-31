@@ -8,6 +8,8 @@ import TableComponent from "./components/TableComponent";
 function App() {
   return (
     <>
+      {/* <AppContext.Provider> */}
+
       <div
         style={{
           backgroundColor: "#200f21",
@@ -24,13 +26,13 @@ function App() {
           </div>
         </div>
         <div className="bg-animation">
-          {/* cool star colors #e4edf5 ,#63e8ff, #faab4b  */}
           <div id="stars"></div>
           <div id="stars2"></div>
           <div id="stars3"></div>
           <div id="stars4"></div>
         </div>
       </div>
+      {/* </AppContext.Provider> */}
     </>
   );
 }
