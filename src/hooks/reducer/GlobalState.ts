@@ -1,16 +1,18 @@
 import React from "react";
 
 export interface MovieObject {
-  movie: {
-    title: string;
-    release_date: string;
-    poster_path: string;
-    vote_average: number;
-    id: number;
-    overview: string;
-    favorite?: boolean;
-    watchlist?: boolean;
-  };
+  title: string;
+  release_date: string;
+  poster_path: string;
+  vote_average: number;
+  id: number;
+  overview: string;
+  favorite?: boolean;
+  watchlist?: boolean;
+}
+
+export interface MovieList {
+  movieList: [object: MovieObject];
 }
 
 export interface UserListStates {
