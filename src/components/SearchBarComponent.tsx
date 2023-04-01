@@ -1,40 +1,42 @@
 import React from "react";
 
-import Form from "react-bootstrap/Form";
 import FormGroup from "react-bootstrap/FormGroup";
 import FormControl from "react-bootstrap/FormControl";
-import Button from "react-bootstrap/Button";
+import FormText from "react-bootstrap/FormText";
 
 import Container from "react-bootstrap/Container";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+type SearchBarProps = {
+  searchQuery?: string;
+  hideSearchDisplay: boolean;
+  handleChange(
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ): void;
+};
 
-type Props = {};
+const SearchBar = (props: SearchBarProps) => {
+  const { searchQuery, handleChange, hideSearchDisplay } = props;
 
-const SearchBar = (props: Props) => {
   return (
     <>
-      <Form>
-        <Container>
-          <FormGroup className="d-flex flex-column justify-content-center">
-            <FormControl
-              type="text"
-              placeholder="Search for your favorite movies!"
-              style={{ marginTop: "4rem" }}
-            />
-            <Button
-              size="lg"
-              variant="secondary"
-              type="submit"
-              style={{ margin: "auto", marginTop: "1rem" }}
-            >
-              Search&nbsp;&nbsp;
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
-            </Button>
-          </FormGroup>
-        </Container>
-      </Form>
+      <Container>
+        <FormGroup className="d-flex flex-column justify-content-center">
+          <FormControl
+            type="text"
+            placeholder="Search for your favorite movies!"
+            value={searchQuery}
+            onChange={handleChange}
+            style={{ marginTop: "4rem" }}
+          />
+          <FormText
+            className="mx-auto"
+            hidden={hideSearchDisplay}
+            style={{ color: "#FFFFF" }}
+          >
+            Displaying results for search : {searchQuery}
+          </FormText>
+        </FormGroup>
+      </Container>
     </>
   );
 };
