@@ -1,6 +1,6 @@
 import React from "react";
 
-export type MovieObject = {
+export interface MovieObject {
   movie: {
     title: string;
     release_date: string;
@@ -11,7 +11,7 @@ export type MovieObject = {
     favorite?: boolean;
     watchlist?: boolean;
   };
-};
+}
 
 export interface UserListStates {
   favorites: object[];

@@ -20,7 +20,7 @@ import { faStar as faBorderStar } from "@fortawesome/free-regular-svg-icons";
 import { faHeart as faBorderHeart } from "@fortawesome/free-regular-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Container, ToastBody } from "react-bootstrap";
-
+import SearchBar from "./SearchBarComponent";
 type Props = {};
 
 const TableComponent = (props: Props) => {
@@ -70,95 +70,61 @@ const TableComponent = (props: Props) => {
   };
 
   return (
-    <Container>
-      <Table striped hover variant="dark" style={{ marginTop: "2rem" }}>
-        <thead>
-          <tr>
-            <th></th>
-            <th>Name</th>
-            <th>TMDB Rating</th>
-            <th>Your rating</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody className="text-align-center">
-          <tr>
-            <td style={{ maxHeight: "3rem", maxWidth: "3rem" }}>
-              <img
-                alt="poster"
-                src={
-                  "https://image.tmdb.org/t/p/w200" + testMovie[0].poster_path
-                }
-                style={{ maxHeight: "100%", maxWidth: "100%" }}
-              />
-            </td>
-            <td>
-              <div style={{ padding: "4px 8px", marginTop: "1.9rem" }}>
-                <p>
-                  {testMovie[0].title}
-                  <small style={{ color: "GrayText" }}>
-                    {" (" + testMovie[0].release_date + ")"}
-                  </small>
-                </p>
-              </div>
-            </td>
-            <td>
-              <div style={{ padding: "4px 8px", marginTop: "1.9rem" }}>
-                {testMovie[0].vote_average}&nbsp;
-                <FontAwesomeIcon color="gold" icon={faStar} />
-              </div>
-            </td>
-            <td>
-              <Button
-                variant="outline-light"
-                style={{
-                  padding: "4px 8px",
-                  border: "none",
-                  marginTop: "1.9rem",
-                }}
-              >
-                Rate &nbsp;
-                <FontAwesomeIcon color="gold" icon={faBorderStar} />
-              </Button>
-            </td>
-            <td>
-              <Button
-                variant="outline-light"
-                size="sm"
-                className="w-100"
-                onClick={handleShow}
-                style={{
-                  marginTop: "1.9rem",
-                  borderRadius: "360px",
-                  border: "none",
-                }}
-              >
-                {show ? (
-                  <FontAwesomeIcon size="xl" icon={faHeart} />
-                ) : (
-                  <FontAwesomeIcon size="xl" icon={faBorderHeart} />
-                )}
-              </Button>
-              <ToastContainer containerPosition="relative">
-                <Toast
-                  onClose={() => setShow(false)}
-                  show={show}
-                  delay={1500}
-                  autohide
+    <>
+      <SearchBar />
+      <Container>
+        <Table striped hover variant="dark" style={{ marginTop: "2rem" }}>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Name</th>
+              <th>TMDB Rating</th>
+              <th>Your rating</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody className="text-align-center">
+            <tr>
+              <td style={{ maxHeight: "3rem", maxWidth: "3rem" }}>
+                <img
+                  alt="poster"
+                  src={
+                    "https://image.tmdb.org/t/p/w200" + testMovie[0].poster_path
+                  }
+                  style={{ maxHeight: "100%", maxWidth: "100%" }}
+                />
+              </td>
+              <td>
+                <div style={{ padding: "4px 8px", marginTop: "1.9rem" }}>
+                  <p>
+                    {testMovie[0].title}
+                    <small style={{ color: "GrayText" }}>
+                      {" (" + testMovie[0].release_date + ")"}
+                    </small>
+                  </p>
+                </div>
+              </td>
+              <td>
+                <div style={{ padding: "4px 8px", marginTop: "1.9rem" }}>
+                  {testMovie[0].vote_average}&nbsp;
+                  <FontAwesomeIcon color="gold" icon={faStar} />
+                </div>
+              </td>
+              <td>
+                <Button
+                  variant="outline-light"
                   style={{
-                    background: "transparent",
-                    color: "white",
-                    fontStyle: "italic",
-                    boxShadow: "none",
+                    padding: "4px 8px",
+                    border: "none",
+                    marginTop: "1.9rem",
                   }}
                 >
-                  added to favorites
-                </Toast>
-              </ToastContainer>
-            </td>
-            <td>
-              <div>
+                  Rate &nbsp;
+                  <FontAwesomeIcon color="gold" icon={faBorderStar} />
+                </Button>
+              </td>
+              <td>
                 <Button
                   variant="outline-light"
                   size="sm"
@@ -171,9 +137,9 @@ const TableComponent = (props: Props) => {
                   }}
                 >
                   {show ? (
-                    <FontAwesomeIcon size="xl" icon={faEye} />
+                    <FontAwesomeIcon size="xl" icon={faHeart} />
                   ) : (
-                    <FontAwesomeIcon size="xl" icon={faBorderedEye} />
+                    <FontAwesomeIcon size="xl" icon={faBorderHeart} />
                   )}
                 </Button>
                 <ToastContainer containerPosition="relative">
@@ -184,21 +150,58 @@ const TableComponent = (props: Props) => {
                     autohide
                     style={{
                       background: "transparent",
-                      border: "none",
                       color: "white",
                       fontStyle: "italic",
                       boxShadow: "none",
                     }}
                   >
-                    added to watchlist
+                    added to favorites
                   </Toast>
                 </ToastContainer>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </Table>
-    </Container>
+              </td>
+              <td>
+                <div>
+                  <Button
+                    variant="outline-light"
+                    size="sm"
+                    className="w-100"
+                    onClick={handleShow}
+                    style={{
+                      marginTop: "1.9rem",
+                      borderRadius: "360px",
+                      border: "none",
+                    }}
+                  >
+                    {show ? (
+                      <FontAwesomeIcon size="xl" icon={faEye} />
+                    ) : (
+                      <FontAwesomeIcon size="xl" icon={faBorderedEye} />
+                    )}
+                  </Button>
+                  <ToastContainer containerPosition="relative">
+                    <Toast
+                      onClose={() => setShow(false)}
+                      show={show}
+                      delay={1500}
+                      autohide
+                      style={{
+                        background: "transparent",
+                        border: "none",
+                        color: "white",
+                        fontStyle: "italic",
+                        boxShadow: "none",
+                      }}
+                    >
+                      added to watchlist
+                    </Toast>
+                  </ToastContainer>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </Table>
+      </Container>
+    </>
   );
 };
 

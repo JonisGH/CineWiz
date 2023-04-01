@@ -2,7 +2,6 @@ import React from "react";
 
 import "./App.css";
 import NavbarComponent from "./components/NavbarComponent";
-import SearchBar from "./components/SearchBarComponent";
 import TableComponent from "./components/TableComponent";
 
 function App() {
@@ -20,7 +19,6 @@ function App() {
       >
         <div style={{ position: "relative", zIndex: 1 }}>
           <NavbarComponent />
-          <SearchBar />
           <div>
             <TableComponent />
           </div>
