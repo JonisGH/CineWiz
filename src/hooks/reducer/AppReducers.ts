@@ -4,7 +4,7 @@ import {
   UserListStates,
   SearchqueryListState,
   initialSearchqueryListState,
-} from "./GlobalState";
+} from "../../context/GlobalState";
 
 // Constants and reducer for adding to Watchlist & Favorites.
 export type USERLIST_ACTION_CONSTANTS =

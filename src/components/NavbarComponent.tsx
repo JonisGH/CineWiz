@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Container from "react-bootstrap/Container";
 import NavbarBrand from "react-bootstrap/NavbarBrand";
 import Navbar from "react-bootstrap/Navbar";
@@ -20,7 +20,7 @@ const NavbarComponent = (): JSX.Element => {
 
   return (
     <>
-      <Navbar sticky="top" bg="dark" variant="dark">
+      <Navbar fixed="top" bg="dark" variant="dark">
         <Container
           style={{ transition: "margin-right .5s", paddingRight: "20px" }}
         >

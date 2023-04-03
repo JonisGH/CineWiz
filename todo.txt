@@ -1,1 +1,3 @@
 läs om typ vs interface i TypeScript
+läs om context
+fixa keys på map

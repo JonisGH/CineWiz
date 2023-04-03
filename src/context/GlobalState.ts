@@ -1,4 +1,5 @@
-import React from "react";
+import React, { createContext, useReducer } from "react";
+import { userListReducer } from "../hooks/reducer/AppReducers";
 
 export interface MovieObject {
   title: string;
@@ -9,10 +10,6 @@ export interface MovieObject {
   overview: string;
   favorite?: boolean;
   watchlist?: boolean;
-}
-
-export interface MovieList {
-  movieList: [object: MovieObject];
 }
 
 export interface UserListStates {

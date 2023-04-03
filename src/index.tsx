@@ -11,7 +11,10 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <ThemeProvider>
+  <ThemeProvider
+    breakpoints={["xxl", "xl", "lg", "md", "sm"]}
+    minBreakpoint="sm"
+  >
     <App />
   </ThemeProvider>
 );
