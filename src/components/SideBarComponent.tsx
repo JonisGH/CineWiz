@@ -1,15 +1,14 @@
-import React from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye } from "@fortawesome/free-solid-svg-icons";
-import { faEye as faBorderedEye } from "@fortawesome/free-regular-svg-icons";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { faStar as faBorderStar } from "@fortawesome/free-regular-svg-icons";
-import { faHeart as faBorderHeart } from "@fortawesome/free-regular-svg-icons";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+// icon imports
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome/";
+import { faStar as starFilled } from "@fortawesome/free-solid-svg-icons";
+import { faHeart as heartFilled } from "@fortawesome/free-solid-svg-icons";
+import { faHeart as heartOutlined } from "@fortawesome/free-regular-svg-icons";
+import { faEye as eyeFilled } from "@fortawesome/free-solid-svg-icons";
+import { faEye as eyeOutlined } from "@fortawesome/free-regular-svg-icons";
 
 type SideBarProps = {
   show?: boolean;
@@ -31,7 +30,10 @@ export default function SideBarComponent(props: SideBarProps) {
         <Table striped hover variant="dark">
           <thead>
             <th>
-              <FontAwesomeIcon size="xl" icon={faHeart} />
+              <div className="d-flex gap-3">
+                <FontAwesomeIcon size="xl" icon={heartOutlined} />
+                <small>Favorites</small>
+              </div>
             </th>
           </thead>
           <tbody>
@@ -39,7 +41,7 @@ export default function SideBarComponent(props: SideBarProps) {
               <td>Shawshank redemption</td>
               <td>
                 9.7 &nbsp;&nbsp;
-                <FontAwesomeIcon color="gold" icon={faStar} />
+                <FontAwesomeIcon color="gold" icon={starFilled} />
               </td>
 
               <td>
@@ -51,7 +53,7 @@ export default function SideBarComponent(props: SideBarProps) {
                     border: "none",
                   }}
                 >
-                  <FontAwesomeIcon size="xl" icon={faBorderHeart} />
+                  <FontAwesomeIcon size="xl" icon={heartFilled} />
                 </Button>
               </td>
             </tr>
@@ -60,7 +62,10 @@ export default function SideBarComponent(props: SideBarProps) {
         <Table striped hover variant="dark">
           <thead>
             <th>
-              <FontAwesomeIcon size="xl" icon={faEye} />
+              <div className="d-flex gap-3">
+                <FontAwesomeIcon size="xl" icon={eyeOutlined} />
+                <small>Watchlist</small>
+              </div>
             </th>
           </thead>
           <tbody>
@@ -68,7 +73,7 @@ export default function SideBarComponent(props: SideBarProps) {
               <td>Shawshank redemption</td>
               <td>
                 9.7 &nbsp;&nbsp;
-                <FontAwesomeIcon color="gold" icon={faStar} />
+                <FontAwesomeIcon color="gold" icon={starFilled} />
               </td>
 
               <td>
@@ -80,7 +85,7 @@ export default function SideBarComponent(props: SideBarProps) {
                     border: "none",
                   }}
                 >
-                  <FontAwesomeIcon size="xl" icon={faBorderedEye} />
+                  <FontAwesomeIcon size="xl" icon={eyeFilled} />
                 </Button>
               </td>
             </tr>

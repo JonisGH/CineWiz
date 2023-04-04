@@ -2,13 +2,21 @@
   text-align: center;
 }
 
+.app-wrapper {
+  margin-top: 3rem;
+  min-height: 100vh;
+  height: 100%;
+  background-color: #200f21;
+  padding-bottom: 10rem;
+}
+
 .bg-animation {
   z-index: 0;
   position: absolute;
   top: 0;
-  left: 0;
   bottom: 0;
-  width: 100%;
+  left: 0;
+  right: 0;
   height: 100%;
 }
 
@@ -1191,5 +1199,12 @@
   }
   to {
     transform: translateY(-2000px);
+  }
+}
+
+@media (min-width: 2000px) {
+  .bg-animation {
+    right: 10%;
+    left: 10%;
   }
 }
