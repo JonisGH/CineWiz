@@ -1,91 +1,173 @@
-import * as React from "react";
-import { UserListStates, MovieObject } from "../@types/@types.todo";
+import {
+  ReactElement,
+  ChangeEvent,
+  useReducer,
+  useCallback,
+  useContext,
+  createContext,
+} from 'react';
 
-export const AppContext = React.createContext<UserListStates | null>(null);
+export type MovieObject = {
+  title: string;
+  release_date: string;
+  poster_path: string;
+  vote_average: number;
+  id: number;
+  overview: string;
+  favorite?: boolean;
+  watchlist?: boolean;
+};
 
-const AppProvider: React.FC<React.ReactNode> = (children) => {
-  const [favorite, setFavorite] = React.useState<MovieObject[]>([
-    // {
-    //   title: "Best movie ever",
-    //   release_date: "2023-04-01",
-    //   poster_path: "/thiswebsite.com",
-    //   vote_average: 9,
-    //   id: 1337,
-    //   overview: "about the best stuff in the world",
-    //   favorite: false,
-    //   watchlist: false,
-    // },
-  ]);
+type UserListStateType = {
+  favorites: MovieObject[];
+  watchlist: MovieObject[];
+};
 
-  const saveToFavorites = (movie: MovieObject) => {
-    const newFavorite: MovieObject = {
-      title: movie.title,
-      release_date: movie.release_date,
-      poster_path: movie.poster_path,
-      vote_average: movie.vote_average,
-      id: movie.id,
-      overview: movie.overview,
-      favorite: true,
-    };
-    setFavorite([...favorite, newFavorite]);
+export const initialUserListState: UserListStateType = {
+  favorites: [],
+  watchlist: [],
+};
+
+// Reducer
+const enum REDUCER_ACTION_TYPE {
+  ADD_TO_WATCHLIST,
+  ADD_TO_FAVORITES,
+  REMOVE_FROM_WATCHLIST,
+  REMOVE_FROM_FAVORITES,
+}
+
+type UserListReducerAction = {
+  type: REDUCER_ACTION_TYPE;
+  payload: MovieObject;
+};
+
+const userListReducer = (
+  state: UserListStateType,
+  action: UserListReducerAction
+): UserListStateType => {
+  switch (action.type) {
+    // Favorites Add & Remove
+    case REDUCER_ACTION_TYPE.ADD_TO_FAVORITES: {
+      return {
+        ...state,
+        favorites: [action.payload, ...state.favorites],
+      };
+    }
+    case REDUCER_ACTION_TYPE.REMOVE_FROM_FAVORITES: {
+      return {
+        ...state,
+        watchlist: state.favorites.filter(
+          (movie) => movie.id !== action.payload.id
+        ),
+      };
+    }
+    // Watchlist Add & Remove
+    case REDUCER_ACTION_TYPE.ADD_TO_WATCHLIST: {
+      return {
+        ...state,
+        favorites: [action.payload, ...state.watchlist],
+      };
+    }
+    case REDUCER_ACTION_TYPE.REMOVE_FROM_WATCHLIST: {
+      return {
+        ...state,
+        watchlist: state.watchlist.filter(
+          (movie) => movie.id !== action.payload.id
+        ),
+      };
+    }
+    default:
+      console.error('An error occurred');
+      return state;
+  }
+};
+// Context & Hooks
+const useUserListContext = (initialUserListState: UserListStateType) => {
+  const [state, dispatch] = useReducer(userListReducer, initialUserListState);
+
+  /*/ Making use of useCallback here to prevent components from rerendering /*/
+  const addToFavorites = useCallback((movie: MovieObject) => {
+    dispatch({ type: REDUCER_ACTION_TYPE.ADD_TO_FAVORITES, payload: movie });
+  }, []);
+
+  const removeFromFavorites = useCallback((movie: MovieObject) => {
+    dispatch({
+      type: REDUCER_ACTION_TYPE.REMOVE_FROM_FAVORITES,
+      payload: movie,
+    });
+  }, []);
+
+  const addToWatchlist = useCallback((movie: MovieObject) => {
+    dispatch({ type: REDUCER_ACTION_TYPE.ADD_TO_WATCHLIST, payload: movie });
+  }, []);
+
+  const removeFromWatchlist = useCallback((movie: MovieObject) => {
+    dispatch({
+      type: REDUCER_ACTION_TYPE.REMOVE_FROM_WATCHLIST,
+      payload: movie,
+    });
+  }, []);
+
+  return {
+    state,
+    addToFavorites,
+    removeFromFavorites,
+    addToWatchlist,
+    removeFromWatchlist,
   };
-  // const updateTodo = (id: number) => {
-  //     todos.filter((todo: ITodo) => {
-  //       if (todo.id === id) {
-  //         todo.status = true
-  //         setTodos([...todos])
-  //       }
-  //     })
+};
 
+type UseUserListContextType = ReturnType<typeof useUserListContext>;
+
+const initialUserListContextState: UseUserListContextType = {
+  state: initialUserListState,
+  addToFavorites: () => {},
+  removeFromFavorites: () => {},
+  addToWatchlist: () => {},
+  removeFromWatchlist: () => {},
+};
+
+export const UserListContext = createContext<UseUserListContextType>(
+  initialUserListContextState
+);
+
+type ChildrenType = {
+  children?: ReactElement | undefined;
+};
+
+export const UserlistProvider = ({
+  children,
+  ...initialUserListState
+}: ChildrenType & UserListStateType): ReactElement => {
   return (
-    <AppContext.Provider
-      value={{ favorites: [], watchlist: [], saveToFavorites }}
-    >
+    <UserListContext.Provider value={useUserListContext(initialUserListState)}>
       {children}
-    </AppContext.Provider>
+    </UserListContext.Provider>
   );
 };
-export default AppProvider;
 
-// context/todoContext.tsx
-// import * as React from 'react';
-// import { TodoContextType, ITodo } from '../@types/todo';
+type UserListHookType = {
+  state: UserListStateType;
+  // What should this be?
+  addToFavorites: (movie: MovieObject) => void;
+  removeFromFavorites: (movie: MovieObject) => void;
+  addToWatchlist: (movie: MovieObject) => void;
+  removeFromWatchlist: (movie: MovieObject) => void;
+};
 
-// export const TodoContext = React.createContext<TodoContextType | null>(null);
-
-// const TodoProvider: React.FC<React.ReactNode> = ({ children }) => {
-//   const [todos, setTodos] = React.useState<ITodo[]>([
-//     {
-//       id: 1,
-//       title: 'post 1',
-//       description: 'this is a description',
-//       status: false,
-//     },
-//     {
-//       id: 2,
-//       title: 'post 2',
-//       description: 'this is a description',
-//       status: true,
-//     },
-//   ]);
-//   const saveTodo = (todo: ITodo) => {
-//     const newTodo: ITodo = {
-//       id: Math.random(), // not really unique - but fine for this example
-//       title: todo.title,
-//       description: todo.description,
-//       status: false,
-//     };
-//     setTodos([...todos, newTodo]);
-//   };
-//   const updateTodo = (id: number) => {
-//     todos.filter((todo: ITodo) => {
-//       if (todo.id === id) {
-//         todo.status = true;
-//         setTodos([...todos]);
-//       }
-//     });
-//   };
-//   return <TodoContext.Provider value={{ todos, saveTodo, updateTodo }}>{children}</TodoContext.Provider>;
-// };
-
-// export default TodoProvider;
+export const useManageUserLists = (): UserListHookType => {
+  const {
+    state,
+    addToFavorites,
+    removeFromFavorites,
+    addToWatchlist,
+    removeFromWatchlist,
+  } = useContext(UserListContext);
+  return {
+    state,
+    addToFavorites,
+    removeFromFavorites,
+    addToWatchlist,
+    removeFromWatchlist,
+  };
+};
