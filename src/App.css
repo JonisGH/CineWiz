@@ -2,10 +2,6 @@
   text-align: center;
 }
 
-.sidenav {
-  width: 25vw !important;
-}
-
 .app-wrapper {
   margin-top: 3rem;
   min-height: 100vh;
@@ -1207,9 +1203,24 @@
 }
 
 /* Centering bg in desktop */
-@media (min-width: 2000px) {
+@media (min-width: 1900px) {
   .bg-animation {
     right: 10%;
     left: 10%;
+  }
+  .sidenav {
+    width: 23vw !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .sidenav {
+    width: 20vw !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .sidenav {
+    width: 100% !important;
   }
 }

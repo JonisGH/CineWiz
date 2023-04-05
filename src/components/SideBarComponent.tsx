@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
@@ -40,11 +42,14 @@ export default function SideBarComponent(props: SideBarProps) {
   return (
     <>
       <Offcanvas
+        className={"sidenav"}
         backdrop={false}
-        scroll
         placement={barPlacement}
         show={show}
-        style={{ backgroundColor: "#212529", top: "3rem" }}
+        style={{
+          backgroundColor: "#212529",
+          top: "3rem",
+        }}
       >
         <Table striped hover variant="dark">
           <thead style={{ borderColor: "#212529" }}>
