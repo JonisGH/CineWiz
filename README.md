@@ -2,18 +2,14 @@
 # [Live demo on Netlify](https://642de49d62912b04ac936d8c--extraordinary-liger-0a9ecd.netlify.app/)
 
 
-## CineWiz is using TMDB API
+## CineWiz is using [TMDB API](https://www.themoviedb.org/documentation/api)
 
-https://www.themoviedb.org/documentation/api
 
 ## StarBG css
 
-Originally made by user @riley-pearce on codepen:
-@riley-pearce:
-https://codepen.io/riley-pearce
+Originally made by user [@riley-pearce on codepen](https://codepen.io/riley-pearce)
 
-Animated Star Background - HTML/CSS only (1080 only. Needs revision)
-https://codepen.io/riley-pearce/pen/OJWPjZM
+[Animated Star Background - HTML/CSS only (1080 only. Needs revision)](https://codepen.io/riley-pearce/pen/OJWPjZM)
 
 # Getting Started with Create React App
 
