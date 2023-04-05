@@ -40,11 +40,14 @@ export default function SideBarComponent(props: SideBarProps) {
   return (
     <>
       <Offcanvas
+        className={"sidebar"}
         backdrop={false}
-        scroll
         placement={barPlacement}
         show={show}
-        style={{ backgroundColor: "#212529", top: "3rem" }}
+        style={{
+          backgroundColor: "#212529",
+          top: "3rem",
+        }}
       >
         <Table striped hover variant="dark">
           <thead style={{ borderColor: "#212529" }}>

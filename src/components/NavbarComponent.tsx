@@ -4,7 +4,6 @@ import NavbarBrand from "react-bootstrap/NavbarBrand";
 import Navbar from "react-bootstrap/Navbar";
 
 import SideBarComponent from "./SideBarComponent";
-// import CustomSidenav from "./CustomSidenav";
 
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,10 +12,10 @@ import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 const NavbarComponent = (): JSX.Element => {
-  const [openSidebar, setOpenSidebar] = useState(false);
+  const [sidebarOpen, setSiderbarOpen] = useState(false);
 
-  const handleSidemenuClose = () => {
-    setOpenSidebar(!openSidebar);
+  const toggleSidebarOpen = () => {
+    setSiderbarOpen(!sidebarOpen);
   };
 
   return (
@@ -34,9 +33,9 @@ const NavbarComponent = (): JSX.Element => {
               border: "none",
               fontWeight: "bold",
             }}
-            onClick={handleSidemenuClose}
+            onClick={toggleSidebarOpen}
           >
-            {openSidebar ? (
+            {sidebarOpen ? (
               <>
                 <FontAwesomeIcon icon={faChevronRight} />
                 <FontAwesomeIcon icon={faChevronRight} />
@@ -50,7 +49,7 @@ const NavbarComponent = (): JSX.Element => {
             &nbsp;My stuff&nbsp;
           </Button>
         </Container>
-        <SideBarComponent barPlacement="end" show={openSidebar} />
+        <SideBarComponent barPlacement="end" show={sidebarOpen} />
       </Navbar>
     </>
   );
