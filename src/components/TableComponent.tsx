@@ -11,7 +11,7 @@ import TableRowComponent from "./TableRowComponent";
 type Props = {};
 
 const TableComponent = (props: Props) => {
-  const [hideSearchDisplay, setHideSearchDisplay] = useState(true);
+  const [hideSearchDisplay, setHideSearchDisplay] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const debouncedValue = useDebounce<string>(searchQuery, 500);
 
@@ -30,21 +30,19 @@ const TableComponent = (props: Props) => {
     }
   }
 
-  console.log(searchResult);
-
   return (
     <>
       <SearchBar
-        searchQuery={searchQuery}
-        hideSearchDisplay={hideSearchDisplay}
+        searchInput={searchQuery}
+        show={hideSearchDisplay}
+        setShow={setHideSearchDisplay}
         handleChange={handleChange}
       />
       <Container>
         <Table striped hover variant="dark" style={{ marginTop: "2rem" }}>
           <tbody className="text-align-center">
-            {/* Mapping table here */}
             {searchResult.map((movie) => {
-              return <TableRowComponent movie={movie} />;
+              return <TableRowComponent key={movie.id + "row"} movie={movie} />;
             })}
           </tbody>
         </Table>

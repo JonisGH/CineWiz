@@ -5,7 +5,7 @@ import {
   useCallback,
   useContext,
   createContext,
-} from 'react';
+} from "react";
 
 export type MovieObject = {
   title: string;
@@ -48,6 +48,18 @@ const userListReducer = (
   switch (action.type) {
     // Favorites Add & Remove
     case REDUCER_ACTION_TYPE.ADD_TO_FAVORITES: {
+      if (state.favorites.find((movie) => movie.id === action.payload.id)) {
+        return state;
+      }
+      // put this here because i dont think a favorite movie should be able to be in watchlist
+      if (state.watchlist.find((movie) => movie.id === action.payload.id)) {
+        return {
+          watchlist: state.watchlist.filter(
+            (movie) => movie.id !== action.payload.id
+          ),
+          favorites: [action.payload, ...state.favorites],
+        };
+      }
       return {
         ...state,
         favorites: [action.payload, ...state.favorites],
@@ -56,16 +68,22 @@ const userListReducer = (
     case REDUCER_ACTION_TYPE.REMOVE_FROM_FAVORITES: {
       return {
         ...state,
-        watchlist: state.favorites.filter(
+        favorites: state.favorites.filter(
           (movie) => movie.id !== action.payload.id
         ),
       };
     }
     // Watchlist Add & Remove
     case REDUCER_ACTION_TYPE.ADD_TO_WATCHLIST: {
+      if (state.watchlist.find((movie) => movie.id === action.payload.id)) {
+        return state;
+      }
+      if (state.favorites.find((movie) => movie.id === action.payload.id)) {
+        return state;
+      }
       return {
         ...state,
-        favorites: [action.payload, ...state.watchlist],
+        watchlist: [action.payload, ...state.watchlist],
       };
     }
     case REDUCER_ACTION_TYPE.REMOVE_FROM_WATCHLIST: {
@@ -77,7 +95,7 @@ const userListReducer = (
       };
     }
     default:
-      console.error('An error occurred');
+      console.error("An error occurred");
       return state;
   }
 };
@@ -148,7 +166,6 @@ export const UserlistProvider = ({
 
 type UserListHookType = {
   state: UserListStateType;
-  // What should this be?
   addToFavorites: (movie: MovieObject) => void;
   removeFromFavorites: (movie: MovieObject) => void;
   addToWatchlist: (movie: MovieObject) => void;

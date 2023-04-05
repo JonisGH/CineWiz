@@ -1,16 +1,16 @@
-import './App.css';
-import { UserlistProvider, initialUserListState } from './context/appContext';
-import NavbarComponent from './components/NavbarComponent';
-import TableComponent from './components/TableComponent';
+import "./App.css";
+import { UserlistProvider, initialUserListState } from "./context/appContext";
+import NavbarComponent from "./components/NavbarComponent";
+import TableComponent from "./components/TableComponent";
 
 function App() {
   return (
     <UserlistProvider
       favorites={initialUserListState.favorites}
-      watchlist={initialUserListState.favorites}
+      watchlist={initialUserListState.watchlist}
     >
       <div className="app-wrapper">
-        <div style={{ position: 'relative', zIndex: 1 }}>
+        <div style={{ position: "relative", zIndex: 1 }}>
           <NavbarComponent />
           <TableComponent />
         </div>
