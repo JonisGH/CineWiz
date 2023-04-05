@@ -3,13 +3,11 @@ import { useState } from "react";
 // icon imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome/";
 import { faStar as starFilled } from "@fortawesome/free-solid-svg-icons";
-// import { faStar as starOutlined } from "@fortawesome/free-regular-svg-icons";
 import { faHeart as heartFilled } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as heartOutlined } from "@fortawesome/free-regular-svg-icons";
 import { faEye as eyeFilled } from "@fortawesome/free-solid-svg-icons";
 import { faEye as eyeOutlined } from "@fortawesome/free-regular-svg-icons";
 
-// Toast
 import ButtonToastComponent from "./ButtonToastComponent";
 
 import Button from "react-bootstrap/Button";
@@ -84,19 +82,6 @@ const TableRowComponent = (props: RowProps): JSX.Element => {
             <FontAwesomeIcon color="gold" icon={starFilled} />
           </div>
         </td>
-        {/* <td }>
-        <Button
-          variant="outline-light"
-          style={{
-            padding: "4px 8px",
-            border: "none",
-            marginTop: "1.9rem",
-          }}
-        >
-          Rate &nbsp;
-          <FontAwesomeIcon color="gold" icon={starOutlined} />
-        </Button>
-      </td> */}
         <td className="border-0">
           <div className="mt-4 mb-4">
             <Button

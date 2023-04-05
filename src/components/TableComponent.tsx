@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, ChangeEvent } from "react";
 import useDebounce from "../hooks/useDebounce";
 
 import Table from "react-bootstrap/Table";
@@ -21,7 +21,7 @@ const TableComponent = (props: Props) => {
   });
 
   function handleChange(
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ): void {
     event.preventDefault();
 
@@ -40,7 +40,7 @@ const TableComponent = (props: Props) => {
       />
       <Container>
         <Table striped hover variant="dark" style={{ marginTop: "2rem" }}>
-          <tbody className="text-align-center">
+          <tbody className="text-align-center tablebody">
             {searchResult.map((movie) => {
               return <TableRowComponent key={movie.id + "row"} movie={movie} />;
             })}

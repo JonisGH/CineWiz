@@ -4,7 +4,6 @@ import NavbarBrand from "react-bootstrap/NavbarBrand";
 import Navbar from "react-bootstrap/Navbar";
 
 import SideBarComponent from "./SideBarComponent";
-// import CustomSidenav from "./CustomSidenav";
 
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

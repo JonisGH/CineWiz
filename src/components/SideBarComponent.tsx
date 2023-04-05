@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
@@ -42,7 +40,7 @@ export default function SideBarComponent(props: SideBarProps) {
   return (
     <>
       <Offcanvas
-        className={"sidenav"}
+        className={"sidebar"}
         backdrop={false}
         placement={barPlacement}
         show={show}

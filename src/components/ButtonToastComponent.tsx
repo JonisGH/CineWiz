@@ -1,10 +1,10 @@
-import React from "react";
+import { Dispatch, SetStateAction } from "react";
 import { Toast, ToastContainer } from "react-bootstrap";
 
 type Props = {
   toastMessage: string;
   show: boolean;
-  setShow: React.Dispatch<React.SetStateAction<boolean>>;
+  setShow: Dispatch<SetStateAction<boolean>>;
 };
 
 const ButtonToastComponent = (props: Props) => {

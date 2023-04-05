@@ -1208,19 +1208,27 @@
     right: 10%;
     left: 10%;
   }
-  .sidenav {
+  .sidebar {
     width: 23vw !important;
   }
 }
 
 @media (min-width: 1200px) {
-  .sidenav {
+  .sidebar {
     width: 20vw !important;
+  }
+  .tablebody {
+    font-size: large;
+    font-weight: bold;
   }
 }
 
 @media (max-width: 1200px) {
-  .sidenav {
+  .sidebar {
     width: 100% !important;
+  }
+  .tablebody {
+    font-size: large;
+    font-weight: bold;
   }
 }
