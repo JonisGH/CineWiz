@@ -5,11 +5,11 @@
 ## CineWiz is using [TMDB API](https://www.themoviedb.org/documentation/api)
 
 
-## StarBG css
+## [ StarBG css ](https://codepen.io/riley-pearce/pen/OJWPjZM)
+
 
 Originally made by user [@riley-pearce on codepen](https://codepen.io/riley-pearce)
 
-[Animated Star Background - HTML/CSS only (1080 only. Needs revision)](https://codepen.io/riley-pearce/pen/OJWPjZM)
 
 # Getting Started with Create React App
 
