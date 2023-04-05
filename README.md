@@ -6,8 +6,6 @@
 
 
 ## [StarBG css](https://codepen.io/riley-pearce/pen/OJWPjZM)
-
-
 Originally made by user [@riley-pearce on codepen](https://codepen.io/riley-pearce)
 
 
