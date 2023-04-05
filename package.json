@@ -48,7 +48,9 @@
     ]
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.21.4",
     "react-router": "^6.9.0",
-    "react-router-dom": "^6.9.0"
+    "react-router-dom": "^6.9.0",
+    "ts-jest": "^29.1.0"
   }
 }
