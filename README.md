@@ -1,7 +1,6 @@
-<link>
-https://642de49d62912b04ac936d8c--extraordinary-liger-0a9ecd.netlify.app/
 
-<link/>
+# [Live demo on Netlify](https://642de49d62912b04ac936d8c--extraordinary-liger-0a9ecd.netlify.app/)
+
 
 ## CineWiz is using TMDB API
 
