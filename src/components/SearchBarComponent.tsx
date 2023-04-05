@@ -28,6 +28,7 @@ const SearchBar = (props: SearchBarProps) => {
         setShow(true);
       }, 800);
     }
+    // eslint-disable-next-line
   }, [searchInput]);
 
   return (

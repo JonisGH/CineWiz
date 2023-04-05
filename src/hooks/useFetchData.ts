@@ -75,6 +75,7 @@ const useFetchData = (props: SearchQuery) => {
     if (searchString.length > 0) {
       fetchData();
     }
+    // eslint-disable-next-line
   }, [searchString]);
 
   return { searchResult, loading, error };
