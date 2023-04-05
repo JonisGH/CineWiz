@@ -40,7 +40,6 @@ export default function SideBarComponent(props: SideBarProps) {
   return (
     <>
       <Offcanvas
-        className="sidenav"
         backdrop={false}
         scroll
         placement={barPlacement}
@@ -60,18 +59,25 @@ export default function SideBarComponent(props: SideBarProps) {
             {favorites.map((movie) => {
               return (
                 <tr key={movie.id + "_favorites"}>
-                  <td>{movie.title}</td>
                   <td>
-                    {movie.vote_average}&nbsp;&nbsp;
-                    <FontAwesomeIcon color="gold" icon={starFilled} />
+                    <div>
+                      {movie.vote_average}&nbsp;&nbsp;
+                      <FontAwesomeIcon color="gold" icon={starFilled} />
+                    </div>
                   </td>
                   <td>
+                    <p style={{ lineBreak: "strict" }}>{movie.title}</p>
+                  </td>
+                  <td>
+                    <td></td>
                     <Button
                       variant="outline-light"
                       size="sm"
                       className="w-100"
                       onClick={() => handleRemoveFavorite(movie)}
                       style={{
+                        display: "inline-block",
+                        whiteSpace: "nowrap",
                         border: "none",
                       }}
                     >
@@ -104,10 +110,12 @@ export default function SideBarComponent(props: SideBarProps) {
             {watchlist.map((movie) => {
               return (
                 <tr key={movie.id + "_watchlist"}>
-                  <td>{movie.title}</td>
-                  <td>
-                    {movie.vote_average} &nbsp;&nbsp;
+                  <td style={{ verticalAlign: "middle" }}>
+                    {movie.vote_average}&nbsp;&nbsp;
                     <FontAwesomeIcon color="gold" icon={starFilled} />
+                  </td>
+                  <td>
+                    <p style={{ lineBreak: "strict" }}>{movie.title}</p>
                   </td>
                   <td>
                     <Button
@@ -130,6 +138,8 @@ export default function SideBarComponent(props: SideBarProps) {
                       onClick={() => handleRemoveWatchlist(movie)}
                       style={{
                         border: "none",
+                        display: "inline-block",
+                        whiteSpace: "nowrap",
                       }}
                     >
                       <FontAwesomeIcon size="xl" icon={eyeFilled} />

@@ -3,7 +3,7 @@ import { useState } from "react";
 // icon imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome/";
 import { faStar as starFilled } from "@fortawesome/free-solid-svg-icons";
-import { faStar as starOutlined } from "@fortawesome/free-regular-svg-icons";
+// import { faStar as starOutlined } from "@fortawesome/free-regular-svg-icons";
 import { faHeart as heartFilled } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as heartOutlined } from "@fortawesome/free-regular-svg-icons";
 import { faEye as eyeFilled } from "@fortawesome/free-solid-svg-icons";

@@ -1,17 +1,10 @@
-import {
-  ChangeEvent,
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useCallback,
-} from "react";
+import { ChangeEvent, Dispatch, SetStateAction, useEffect } from "react";
 
 import FormGroup from "react-bootstrap/FormGroup";
 import FormControl from "react-bootstrap/FormControl";
 import FormText from "react-bootstrap/FormText";
 
 import Container from "react-bootstrap/Container";
-import { func } from "prop-types";
 
 type SearchBarProps = {
   searchInput?: string;

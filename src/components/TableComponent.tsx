@@ -15,7 +15,7 @@ const TableComponent = (props: Props) => {
   const [searchQuery, setSearchQuery] = useState("");
   const debouncedValue = useDebounce<string>(searchQuery, 500);
 
-  const { searchResult, loading, error } = useFetchData({
+  const { searchResult } = useFetchData({
     searchString: debouncedValue,
     page: "1",
   });
