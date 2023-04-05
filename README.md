@@ -6,7 +6,7 @@
 
 https://www.themoviedb.org/documentation/api
 
-# StarBG css
+## StarBG css
 
 Originally made by user @riley-pearce on codepen:
 @riley-pearce:
