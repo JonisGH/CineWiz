@@ -47,7 +47,7 @@ export default function SideBarComponent(props: SideBarProps) {
         style={{ backgroundColor: "#212529", top: "3rem" }}
       >
         <Table striped hover variant="dark">
-          <thead>
+          <thead style={{ borderColor: "#212529" }}>
             <tr>
               <th className="d-flex gap-3">
                 <FontAwesomeIcon size="xl" icon={heartOutlined} />
@@ -58,18 +58,18 @@ export default function SideBarComponent(props: SideBarProps) {
           <tbody>
             {favorites.map((movie) => {
               return (
-                <tr key={movie.id + "_favorites"}>
+                <tr
+                  key={movie.id + "_favorites"}
+                  style={{ verticalAlign: "middle", lineBreak: "strict" }}
+                >
                   <td>
                     <div>
                       {movie.vote_average}&nbsp;&nbsp;
                       <FontAwesomeIcon color="gold" icon={starFilled} />
                     </div>
                   </td>
+                  <td>{movie.title}</td>
                   <td>
-                    <p style={{ lineBreak: "strict" }}>{movie.title}</p>
-                  </td>
-                  <td>
-                    <td></td>
                     <Button
                       variant="outline-light"
                       size="sm"
@@ -100,7 +100,7 @@ export default function SideBarComponent(props: SideBarProps) {
         <Table striped hover variant="dark">
           <thead>
             <tr>
-              <th className="d-flex gap-3">
+              <th className="d-flex gap-3" style={{ border: "none" }}>
                 <FontAwesomeIcon size="xl" icon={eyeOutlined} />
                 <small>Watchlist</small>
               </th>
@@ -109,8 +109,11 @@ export default function SideBarComponent(props: SideBarProps) {
           <tbody>
             {watchlist.map((movie) => {
               return (
-                <tr key={movie.id + "_watchlist"}>
-                  <td style={{ verticalAlign: "middle" }}>
+                <tr
+                  key={movie.id + "_watchlist"}
+                  style={{ verticalAlign: "middle", lineBreak: "strict" }}
+                >
+                  <td>
                     {movie.vote_average}&nbsp;&nbsp;
                     <FontAwesomeIcon color="gold" icon={starFilled} />
                   </td>
