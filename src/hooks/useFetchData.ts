@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { MovieObject } from "../@types/@types.todo";
+import { MovieObject } from "../context/appContext";
 import axios from "axios";
 
 type SearchQuery = {
@@ -47,7 +47,7 @@ const useFetchData = (props: SearchQuery) => {
         });
     } catch (error) {
       setError("Failed to fetch data");
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -63,7 +63,7 @@ const useFetchData = (props: SearchQuery) => {
         });
     } catch (error) {
       setError("Failed to fetch data");
-      console.log(error);
+      console.error(error);
     }
   };
 
