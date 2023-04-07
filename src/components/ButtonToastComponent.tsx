@@ -1,10 +1,10 @@
-import { Dispatch, SetStateAction } from "react";
-import { Toast, ToastContainer } from "react-bootstrap";
+import React from 'react';
+import { Toast, ToastContainer } from 'react-bootstrap';
 
 type Props = {
   toastMessage: string;
   show: boolean;
-  setShow: Dispatch<SetStateAction<boolean>>;
+  setShow: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const ButtonToastComponent = (props: Props) => {
@@ -13,23 +13,21 @@ const ButtonToastComponent = (props: Props) => {
     setShow(!show);
   }
   return (
-    <ToastContainer containerPosition="relative">
-      <Toast
-        onClose={handleOnclose}
-        delay={1500}
-        autohide
-        show={show}
-        style={{
-          background: "transparent",
-          border: "none",
-          color: "white",
-          fontStyle: "italic",
-          boxShadow: "none",
-        }}
-      >
-        {toastMessage}
-      </Toast>
-    </ToastContainer>
+    <Toast
+      onClose={handleOnclose}
+      delay={1500}
+      // autohide
+      show={show}
+      style={{
+        background: 'transparent',
+        border: 'none',
+        color: 'white',
+        fontStyle: 'italic',
+        boxShadow: 'none',
+      }}
+    >
+      {toastMessage}
+    </Toast>
   );
 };
 

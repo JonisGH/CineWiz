@@ -1,49 +1,68 @@
-import { useState } from "react";
+import React, { useState, useEffect } from 'react';
 
 // icon imports
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome/";
-import { faStar as starFilled } from "@fortawesome/free-solid-svg-icons";
-import { faHeart as heartFilled } from "@fortawesome/free-solid-svg-icons";
-import { faHeart as heartOutlined } from "@fortawesome/free-regular-svg-icons";
-import { faEye as eyeFilled } from "@fortawesome/free-solid-svg-icons";
-import { faEye as eyeOutlined } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome/';
+import { faStar as starFilled } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as heartFilled } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as heartOutlined } from '@fortawesome/free-regular-svg-icons';
+import { faEye as eyeFilled } from '@fortawesome/free-solid-svg-icons';
+import { faEye as eyeOutlined } from '@fortawesome/free-regular-svg-icons';
+import { faCircleXmark as minus } from '@fortawesome/free-solid-svg-icons';
 
-import ButtonToastComponent from "./ButtonToastComponent";
-
-import Button from "react-bootstrap/Button";
-import { MovieObject, useManageUserLists } from "../context/appContext";
-
+import Button from 'react-bootstrap/Button';
+import { MovieObject, useManageUserLists } from '../context/appContext';
+import Container from 'react-bootstrap/Container';
+import FadingTypographyComponent from './FadingTypographyComponent';
 type RowProps = {
   movie: MovieObject;
 };
 
 const TableRowComponent = (props: RowProps): JSX.Element => {
   const { movie } = props;
-  const [showFavorite, setShowFavorite] = useState(false);
-  const [showWatchlist, setShowWatchlist] = useState(false);
-  const { state, addToFavorites, addToWatchlist } = useManageUserLists();
+  const [firstRender, setFirstRender] = useState(true);
+  const [hideFavorite, setHideFavorite] = useState(true);
+  const [hideWatchlist, setHideWatchlist] = useState(true);
+  const {
+    state,
+    addToFavorites,
+    addToWatchlist,
+    removeFromFavorites,
+    removeFromWatchlist,
+  } = useManageUserLists();
+
+  useEffect(() => {
+    setFirstRender(false);
+  }, []);
 
   function handleAddFavorite() {
+    setHideFavorite(!hideFavorite);
     addToFavorites(movie);
-    setShowFavorite(true);
+  }
+  function handleRemoveFavorite() {
+    setHideFavorite(!hideFavorite);
+    removeFromFavorites(movie);
   }
   function handleAddWatchlist() {
+    setHideWatchlist(!hideWatchlist);
     addToWatchlist(movie);
-    setShowWatchlist(true);
+  }
+  function handleRemoveWatchlist() {
+    setHideWatchlist(!hideWatchlist);
+    removeFromWatchlist(movie);
   }
 
   function buttonStateCheck(
-    listType: "watchlist" | "favorites",
+    listType: 'watchlist' | 'favorites',
     checkMovie: MovieObject
   ): boolean {
     if (
-      listType === "watchlist" &&
+      listType === 'watchlist' &&
       state.watchlist.find((movie) => movie.id === checkMovie.id)
     ) {
       return true;
     }
     if (
-      listType === "favorites" &&
+      listType === 'favorites' &&
       state.favorites.find((movie) => movie.id === checkMovie.id)
     ) {
       return true;
@@ -57,25 +76,25 @@ const TableRowComponent = (props: RowProps): JSX.Element => {
       <tr>
         <td
           className="d-none d-lg-table-cell border-0"
-          style={{ maxHeight: "3rem", maxWidth: "3rem" }}
+          style={{ maxHeight: '3rem', maxWidth: '3rem' }}
         >
           <img
-            src={"https://image.tmdb.org/t/p/w200" + movie.poster_path}
-            alt={"poster-table-cell"}
-            style={{ maxHeight: "100%", maxWidth: "100%" }}
+            src={'https://image.tmdb.org/t/p/w200' + movie.poster_path}
+            alt={'poster-table-cell'}
+            style={{ maxHeight: '100%', maxWidth: '100%' }}
           />
         </td>
-        <td className="border-0" style={{ paddingLeft: "1rem" }}>
+        <td className="border-0" style={{ paddingLeft: '1rem' }}>
           <div className="mt-4 mb-4">
             <p>{movie.title}</p>
-            <small style={{ color: "GrayText" }}>
-              {" (" + movie.release_date + ")"}
+            <small style={{ color: 'GrayText' }}>
+              {' (' + movie.release_date + ')'}
             </small>
           </div>
         </td>
         <td className="border-0">
           <div className="mt-4 mb-4">
-            <small style={{ color: "GrayText" }}>TMDB rating</small>
+            <small style={{ color: 'GrayText' }}>TMDB rating</small>
             &nbsp;
             <br />
             {movie.vote_average}&nbsp;
@@ -83,46 +102,107 @@ const TableRowComponent = (props: RowProps): JSX.Element => {
           </div>
         </td>
         <td className="border-0">
-          <div className="mt-4 mb-4">
-            <Button
-              variant="outline-light"
-              size="sm"
-              className="w-100 mt-4 mb-4 border-0"
-              onClick={handleAddFavorite}
-            >
-              {buttonStateCheck("favorites", movie) ? (
-                <FontAwesomeIcon size="xl" icon={heartFilled} />
-              ) : (
+          <Container className="mt-4 mb-4">
+            {buttonStateCheck('favorites', movie) ? (
+              <Button
+                variant="outline-light"
+                size="sm"
+                className=" mt-4 mb-4 border-0"
+                onClick={handleRemoveFavorite}
+                style={{
+                  maxWidth: '37px',
+                  maxHeight: '29.25px',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                <>
+                  <FontAwesomeIcon size="xl" icon={heartFilled} />
+                  <FontAwesomeIcon
+                    icon={minus}
+                    className="text-dark bg-light"
+                    style={{
+                      borderRadius: '20px',
+                      marginLeft: '-9px',
+                    }}
+                  />
+                </>
+                <FadingTypographyComponent
+                  textValue="added to favorites"
+                  hide={hideFavorite}
+                />
+              </Button>
+            ) : (
+              // w 37 h 29.25 PX
+              <Button
+                variant="outline-light"
+                size="sm"
+                className="mt-4 mb-4 border-0"
+                onClick={handleAddFavorite}
+                style={{
+                  maxWidth: '37px',
+                  maxHeight: '29.25px',
+                  whiteSpace: 'nowrap',
+                }}
+              >
                 <FontAwesomeIcon size="xl" icon={heartOutlined} />
-              )}
-            </Button>
-            <ButtonToastComponent
-              show={showFavorite}
-              setShow={setShowFavorite}
-              toastMessage="added to favorites"
-            />
-          </div>
+                <FadingTypographyComponent
+                  textValue="added to favorites"
+                  hide={hideFavorite}
+                />
+              </Button>
+            )}
+          </Container>
         </td>
-        <td className="border-0" style={{ paddingRight: "1rem" }}>
-          <div className="mt-4 mb-4">
-            <Button
-              variant="outline-light"
-              size="sm"
-              className="w-100 mt-4 mb-4 border-0"
-              onClick={handleAddWatchlist}
-            >
-              {buttonStateCheck("watchlist", movie) ? (
-                <FontAwesomeIcon size="xl" icon={eyeFilled} />
-              ) : (
+        <td className="border-0" style={{ paddingRight: '1rem' }}>
+          <Container className="mt-4 mb-4">
+            {buttonStateCheck('watchlist', movie) ? (
+              <Button
+                variant="outline-light"
+                size="sm"
+                className="mt-4 mb-4 border-0"
+                onClick={handleRemoveWatchlist}
+                style={{
+                  maxWidth: '37px',
+                  maxHeight: '29.25px',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                <>
+                  <FontAwesomeIcon size="xl" icon={eyeFilled} />
+                  <FontAwesomeIcon
+                    icon={minus}
+                    className="text-dark bg-light"
+                    style={{
+                      borderRadius: '20px',
+                      marginLeft: '-9px',
+                    }}
+                  />
+                </>
+                <FadingTypographyComponent
+                  textValue="added to watchlist"
+                  hide={hideWatchlist}
+                />
+              </Button>
+            ) : (
+              <Button
+                variant="outline-light"
+                size="sm"
+                className="mt-4 mb-4 border-0"
+                onClick={handleAddWatchlist}
+                style={{
+                  maxWidth: '37px',
+                  maxHeight: '29.25px',
+                  whiteSpace: 'nowrap',
+                }}
+              >
                 <FontAwesomeIcon size="xl" icon={eyeOutlined} />
-              )}
-            </Button>
-            <ButtonToastComponent
-              show={showWatchlist}
-              setShow={setShowWatchlist}
-              toastMessage="added to watchlist"
-            />
-          </div>
+                <FadingTypographyComponent
+                  textValue="added to watchlist"
+                  hide={hideWatchlist}
+                />
+              </Button>
+            )}
+          </Container>
         </td>
       </tr>
     </>

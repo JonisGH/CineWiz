@@ -1,19 +1,20 @@
-import { useEffect, useState } from "react";
-import { MovieObject } from "../context/appContext";
-import axios from "axios";
+import { useEffect, useState } from 'react';
+import { MovieObject } from '../context/appContext';
+import axios from 'axios';
 
 type SearchQuery = {
   searchString: string;
   page: string;
 };
+// TODO: put in .env
+const TMDB_KEY: string = '47da03161ab5477b6ac6c70f5435f4ae';
 
-const TMDB_KEY: string = "47da03161ab5477b6ac6c70f5435f4ae";
 const BASE_URL: string = `https://api.themoviedb.org/3/search/movie?api_key=${TMDB_KEY}`;
 
 const useFetchData = (props: SearchQuery) => {
   const [searchResult, setSearchResult] = useState<MovieObject[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const { searchString, page } = props;
 
   const dataConverter = (inputData: any[] | undefined): MovieObject[] => {
@@ -46,7 +47,7 @@ const useFetchData = (props: SearchQuery) => {
           setLoading(false);
         });
     } catch (error) {
-      setError("Failed to fetch data");
+      setError('Failed to fetch data');
       console.error(error);
     }
   };
@@ -62,13 +63,13 @@ const useFetchData = (props: SearchQuery) => {
           setLoading(false);
         });
     } catch (error) {
-      setError("Failed to fetch data");
+      setError('Failed to fetch data');
       console.error(error);
     }
   };
 
   useEffect(() => {
-    if (searchString === "") {
+    if (searchString === '') {
       fetchInitialData();
     }
 

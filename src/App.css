@@ -10,6 +10,11 @@
   padding-bottom: 10rem;
 }
 
+.element-fade-in-out {
+  -webkit-animation: fadeinout 2s linear forwards;
+  animation: fadeinout 2s linear forwards;
+}
+
 .bg-animation {
   z-index: 0;
   position: absolute;
@@ -265,7 +270,7 @@
 }
 
 #stars:after {
-  content: " ";
+  content: ' ';
   position: absolute;
   top: 2000px;
   width: 1px;
@@ -585,7 +590,7 @@
 }
 
 #stars2:after {
-  content: " ";
+  content: ' ';
   position: absolute;
   top: 2000px;
   width: 2px;
@@ -705,7 +710,7 @@
 }
 
 #stars3:after {
-  content: " ";
+  content: ' ';
   position: absolute;
   top: 2000px;
   width: 3px;
@@ -958,7 +963,7 @@
 }
 
 #stars4:after {
-  content: " ";
+  content: ' ';
   position: absolute;
   top: 2000px;
   width: 1px;
@@ -1202,8 +1207,7 @@
   }
 }
 
-/* Centering bg in desktop */
-@media (min-width: 1900px) {
+@media (min-width: 1950px) {
   .bg-animation {
     right: 10%;
     left: 10%;
@@ -1215,7 +1219,7 @@
 
 @media (min-width: 1200px) {
   .sidebar {
-    width: 20vw !important;
+    width: 15vw !important;
   }
   .tablebody {
     font-size: large;
@@ -1225,10 +1229,31 @@
 
 @media (max-width: 1200px) {
   .sidebar {
-    width: 100% !important;
+    width: 95% !important;
   }
+
   .tablebody {
     font-size: large;
     font-weight: bold;
+  }
+}
+
+@-webkit-keyframes fadeinout {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeinout {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
   }
 }
