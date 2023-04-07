@@ -1,10 +1,10 @@
-import {
+import React, {
   ReactElement,
   useReducer,
   useCallback,
   useContext,
   createContext,
-} from "react";
+} from 'react';
 
 export type MovieObject = {
   title: string;
@@ -50,15 +50,7 @@ const userListReducer = (
       if (state.favorites.find((movie) => movie.id === action.payload.id)) {
         return state;
       }
-      // put this here because i dont think a favorite movie should be able to be in watchlist
-      if (state.watchlist.find((movie) => movie.id === action.payload.id)) {
-        return {
-          watchlist: state.watchlist.filter(
-            (movie) => movie.id !== action.payload.id
-          ),
-          favorites: [action.payload, ...state.favorites],
-        };
-      }
+
       return {
         ...state,
         favorites: [action.payload, ...state.favorites],
@@ -77,9 +69,7 @@ const userListReducer = (
       if (state.watchlist.find((movie) => movie.id === action.payload.id)) {
         return state;
       }
-      if (state.favorites.find((movie) => movie.id === action.payload.id)) {
-        return state;
-      }
+
       return {
         ...state,
         watchlist: [action.payload, ...state.watchlist],
@@ -94,7 +84,7 @@ const userListReducer = (
       };
     }
     default:
-      console.error("An error occurred");
+      console.error('An error occurred');
       return state;
   }
 };

@@ -1,7 +1,9 @@
-import "./App.css";
-import { UserlistProvider, initialUserListState } from "./context/appContext";
-import NavbarComponent from "./components/NavbarComponent";
-import TableComponent from "./components/TableComponent";
+import React from 'react';
+import './App.css';
+
+import { UserlistProvider, initialUserListState } from './context/appContext';
+import NavbarComponent from './components/NavbarComponent';
+import TableComponent from './components/TableComponent';
 
 function App() {
   return (
@@ -10,7 +12,7 @@ function App() {
       watchlist={initialUserListState.watchlist}
     >
       <div className="app-wrapper">
-        <div style={{ position: "relative", zIndex: 1 }}>
+        <div style={{ position: 'relative', zIndex: 1 }}>
           <NavbarComponent />
           <TableComponent />
         </div>
