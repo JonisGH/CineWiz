@@ -1,5 +1,0 @@
-läs om typ vs interface i TypeScript
-läs om context
-fixa keys på map
-change watchlist toast if already in favorites
-flytta ut toastcontainer ur komponentet kanske så den wrappar knappen
