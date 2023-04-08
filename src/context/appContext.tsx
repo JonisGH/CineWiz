@@ -50,7 +50,6 @@ const userListReducer = (
       if (state.favorites.find((movie) => movie.id === action.payload.id)) {
         return state;
       }
-
       return {
         ...state,
         favorites: [action.payload, ...state.favorites],
@@ -88,6 +87,7 @@ const userListReducer = (
       return state;
   }
 };
+
 // Context & Hooks
 const useUserListContext = (initialUserListState: UserListStateType) => {
   const [state, dispatch] = useReducer(userListReducer, initialUserListState);
