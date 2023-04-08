@@ -11,6 +11,10 @@ Originally made by user [@riley-pearce on codepen](https://codepen.io/riley-pear
 
 
 # Getting Started with CineWiz
-
+<sup>
 npm i 
+</sup>
+
+<sup>
 npm start
+</sup>
