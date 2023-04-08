@@ -1,6 +1,6 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/7c14a5af-05ac-4499-b74e-ee545fff2362/deploy-status)](https://app.netlify.com/sites/cinewiz/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/7c14a5af-05ac-4499-b74e-ee545fff2362/deploy-status)](https://643136037e2e527c9b0bbe63--cinewiz.netlify.app/)
 
-# [Live demo on Netlify](https://642de49d62912b04ac936d8c--extraordinary-liger-0a9ecd.netlify.app/)
+# [Live demo on Netlify](https://643136037e2e527c9b0bbe63--cinewiz.netlify.app/)
 
 
 ## CineWiz is using [TMDB API](https://www.themoviedb.org/documentation/api)
