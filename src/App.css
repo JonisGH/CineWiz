@@ -270,7 +270,7 @@
 }
 
 #stars:after {
-  content: ' ';
+  content: " ";
   position: absolute;
   top: 2000px;
   width: 1px;
@@ -590,7 +590,7 @@
 }
 
 #stars2:after {
-  content: ' ';
+  content: " ";
   position: absolute;
   top: 2000px;
   width: 2px;
@@ -710,7 +710,7 @@
 }
 
 #stars3:after {
-  content: ' ';
+  content: " ";
   position: absolute;
   top: 2000px;
   width: 3px;
@@ -963,7 +963,7 @@
 }
 
 #stars4:after {
-  content: ' ';
+  content: " ";
   position: absolute;
   top: 2000px;
   width: 1px;
@@ -1207,7 +1207,7 @@
   }
 }
 
-@media (min-width: 1950px) {
+@media (min-width: 1980px) {
   .bg-animation {
     right: 10%;
     left: 10%;
@@ -1219,7 +1219,7 @@
 
 @media (min-width: 1200px) {
   .sidebar {
-    width: 15vw !important;
+    width: 50vw !important;
   }
   .tablebody {
     font-size: large;
@@ -1227,9 +1227,9 @@
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1300px) {
   .sidebar {
-    width: 95% !important;
+    width: 100vw !important;
   }
 
   .tablebody {
