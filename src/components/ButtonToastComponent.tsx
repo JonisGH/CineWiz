@@ -1,5 +1,5 @@
-import React from 'react';
-import { Toast, ToastContainer } from 'react-bootstrap';
+import React from "react";
+import { Toast } from "react-bootstrap/esm/index";
 
 type Props = {
   toastMessage: string;
@@ -19,11 +19,11 @@ const ButtonToastComponent = (props: Props) => {
       // autohide
       show={show}
       style={{
-        background: 'transparent',
-        border: 'none',
-        color: 'white',
-        fontStyle: 'italic',
-        boxShadow: 'none',
+        background: "transparent",
+        border: "none",
+        color: "white",
+        fontStyle: "italic",
+        boxShadow: "none",
       }}
     >
       {toastMessage}

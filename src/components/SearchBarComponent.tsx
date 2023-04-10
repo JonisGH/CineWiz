@@ -1,10 +1,10 @@
-import React, { ChangeEvent, Dispatch, SetStateAction, useEffect } from 'react';
+import React, { ChangeEvent, Dispatch, SetStateAction, useEffect } from "react";
 
-import FormGroup from 'react-bootstrap/FormGroup';
-import FormControl from 'react-bootstrap/FormControl';
-import FormText from 'react-bootstrap/FormText';
+import FormGroup from "react-bootstrap/esm/FormGroup";
+import FormControl from "react-bootstrap/esm/FormControl";
+import FormText from "react-bootstrap/esm/FormText";
 
-import Container from 'react-bootstrap/Container';
+import Container from "react-bootstrap/esm/Container";
 
 type SearchBarProps = {
   searchInput?: string;
@@ -23,7 +23,7 @@ const SearchBar = (props: SearchBarProps) => {
   }
 
   useEffect(() => {
-    if (searchInput !== '') {
+    if (searchInput !== "") {
       setTimeout(() => {
         setShow(true);
       }, 800);
@@ -41,7 +41,7 @@ const SearchBar = (props: SearchBarProps) => {
             placeholder="Search for your favorite movies!"
             value={searchInput}
             onChange={handleChange}
-            style={{ marginTop: '4rem' }}
+            style={{ marginTop: "4rem" }}
           />
           <FormText className="mx-auto mt-3 text-light" hidden={!show}>
             Displaying results for search : {searchInput}

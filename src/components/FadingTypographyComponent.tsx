@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 type FadingTypographyProps = {
   textValue: string;
@@ -18,6 +18,7 @@ const FadingTypographyComponent = (
       return;
     }
     setFirstRender(false);
+    // eslint-disable-next-line
   }, [hide]);
 
   return (
@@ -25,11 +26,11 @@ const FadingTypographyComponent = (
       hidden={hidden}
       className="element-fade-in-out"
       style={{
-        marginLeft: '-40px',
-        fontStyle: 'italic',
-        color: 'white',
-        fontSize: '0.9rem',
-        fontWeight: 'initial',
+        marginLeft: "-40px",
+        fontStyle: "italic",
+        color: "white",
+        fontSize: "0.9rem",
+        fontWeight: "initial",
       }}
     >
       {textValue}

@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 
 //Components used in tests
 import App from "../App";
-import Table from "react-bootstrap/Table";
+import Table from "react-bootstrap/esm/Table";
 import TableRowComponent from "../components/TableRowComponent";
 import NavbarComponent from "../components/NavbarComponent";
 // Types used in tests
@@ -15,8 +15,8 @@ Object.defineProperty(window, "matchMedia", {
     matches: false,
     media: query,
     onchange: null,
-    addListener: jest.fn(), 
-    removeListener: jest.fn(), 
+    addListener: jest.fn(),
+    removeListener: jest.fn(),
     addEventListener: jest.fn(),
     removeEventListener: jest.fn(),
     dispatchEvent: jest.fn(),

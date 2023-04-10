@@ -1,23 +1,24 @@
-import React, { useState, ChangeEvent } from 'react';
-import useDebounce from '../hooks/useDebounce';
+import React, { useState, ChangeEvent } from "react";
+import useDebounce from "../hooks/useDebounce";
 
-import Table from 'react-bootstrap/Table';
+import Table from "react-bootstrap/esm/Table";
+import Container from "react-bootstrap/esm/Container";
 
-import Container from 'react-bootstrap/Container';
-import SearchBar from './SearchBarComponent';
-import useFetchData from '../hooks/useFetchData';
-import TableRowComponent from './TableRowComponent';
+import useFetchData from "../hooks/useFetchData";
 
-type Props = {};
+import SearchBar from "../components/SearchBarComponent";
+import TableRowComponent from "../components/TableRowComponent";
 
-const TableComponent = (props: Props) => {
+interface Props {}
+
+function HomePage(props: Props): React.ReactElement {
   const [hideSearchDisplay, setHideSearchDisplay] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const debouncedValue = useDebounce<string>(searchQuery, 500);
 
   const { searchResult } = useFetchData({
     searchString: debouncedValue,
-    page: '1',
+    page: "1",
   });
 
   function handleChange(
@@ -31,7 +32,7 @@ const TableComponent = (props: Props) => {
   }
 
   return (
-    <>
+    <Container>
       <SearchBar
         searchInput={searchQuery}
         show={hideSearchDisplay}
@@ -39,16 +40,16 @@ const TableComponent = (props: Props) => {
         handleChange={handleChange}
       />
       <Container>
-        <Table striped hover variant="dark" style={{ marginTop: '2rem' }}>
+        <Table striped hover variant="dark" style={{ marginTop: "2rem" }}>
           <tbody className="text-align-center tablebody">
             {searchResult.map((movie) => {
-              return <TableRowComponent key={movie.id + 'row'} movie={movie} />;
+              return <TableRowComponent key={movie.id + "row"} movie={movie} />;
             })}
           </tbody>
         </Table>
       </Container>
-    </>
+    </Container>
   );
-};
+}
 
-export default TableComponent;
+export default HomePage;

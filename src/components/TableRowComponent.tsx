@@ -1,25 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 // icon imports
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome/';
-import { faStar as starFilled } from '@fortawesome/free-solid-svg-icons';
-import { faHeart as heartFilled } from '@fortawesome/free-solid-svg-icons';
-import { faHeart as heartOutlined } from '@fortawesome/free-regular-svg-icons';
-import { faEye as eyeFilled } from '@fortawesome/free-solid-svg-icons';
-import { faEye as eyeOutlined } from '@fortawesome/free-regular-svg-icons';
-import { faCircleXmark as minus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome/index";
+import {
+  faStar as starFilled,
+  faHeart as heartFilled,
+  faEye as eyeFilled,
+  faCircleXmark as minus,
+} from "@fortawesome/free-solid-svg-icons/index";
+import {
+  faHeart as heartOutlined,
+  faEye as eyeOutlined,
+} from "@fortawesome/free-regular-svg-icons/index";
 
-import Button from 'react-bootstrap/Button';
-import { MovieObject, useManageUserLists } from '../context/appContext';
-import Container from 'react-bootstrap/Container';
-import FadingTypographyComponent from './FadingTypographyComponent';
+import Button from "react-bootstrap/esm/Button";
+import Container from "react-bootstrap/esm/Container";
+
+// Not sure if i should use this for feedback or keep it out
+// import FadingTypographyComponent from "./FadingTypographyComponent";
+
+import { MovieObject, useManageUserLists } from "../context/appContext";
+import { useNavigate } from "react-router-dom";
+
 type RowProps = {
   movie: MovieObject;
 };
 
 const TableRowComponent = (props: RowProps): JSX.Element => {
   const { movie } = props;
-  const [firstRender, setFirstRender] = useState(true);
   const [hideFavorite, setHideFavorite] = useState(true);
   const [hideWatchlist, setHideWatchlist] = useState(true);
   const {
@@ -30,9 +39,7 @@ const TableRowComponent = (props: RowProps): JSX.Element => {
     removeFromWatchlist,
   } = useManageUserLists();
 
-  useEffect(() => {
-    setFirstRender(false);
-  }, []);
+  const navigate = useNavigate();
 
   function handleAddFavorite() {
     setHideFavorite(!hideFavorite);
@@ -52,17 +59,17 @@ const TableRowComponent = (props: RowProps): JSX.Element => {
   }
 
   function buttonStateCheck(
-    listType: 'watchlist' | 'favorites',
+    listType: "watchlist" | "favorites",
     checkMovie: MovieObject
   ): boolean {
     if (
-      listType === 'watchlist' &&
+      listType === "watchlist" &&
       state.watchlist.find((movie) => movie.id === checkMovie.id)
     ) {
       return true;
     }
     if (
-      listType === 'favorites' &&
+      listType === "favorites" &&
       state.favorites.find((movie) => movie.id === checkMovie.id)
     ) {
       return true;
@@ -73,28 +80,29 @@ const TableRowComponent = (props: RowProps): JSX.Element => {
 
   return (
     <>
-      <tr>
+      <tr onClick={() => navigate("details", { state: movie })}>
         <td
           className="d-none d-lg-table-cell border-0"
-          style={{ maxHeight: '3rem', maxWidth: '3rem' }}
+          style={{ maxHeight: "3rem", maxWidth: "3rem" }}
         >
           <img
-            src={'https://image.tmdb.org/t/p/w200' + movie.poster_path}
-            alt={'poster-table-cell'}
-            style={{ maxHeight: '100%', maxWidth: '100%' }}
+            src={"https://image.tmdb.org/t/p/w200" + movie.poster_path}
+            alt={"poster-table-cell"}
+            style={{ maxHeight: "100%", maxWidth: "100%" }}
           />
         </td>
-        <td className="border-0" style={{ paddingLeft: '1rem' }}>
+        <td className="border-0" style={{ paddingLeft: "1rem" }}>
           <div className="mt-4 mb-4">
             <p>{movie.title}</p>
-            <small style={{ color: 'GrayText' }}>
-              {' (' + movie.release_date + ')'}
+            <small style={{ color: "GrayText" }}>
+              {" (" + movie.release_date + ")"}
             </small>
           </div>
         </td>
+        <td></td>
         <td className="border-0">
           <div className="mt-4 mb-4">
-            <small style={{ color: 'GrayText' }}>TMDB rating</small>
+            <small style={{ color: "GrayText" }}>TMDB rating</small>
             &nbsp;
             <br />
             {movie.vote_average}&nbsp;
@@ -103,16 +111,16 @@ const TableRowComponent = (props: RowProps): JSX.Element => {
         </td>
         <td className="border-0">
           <Container className="mt-4 mb-4">
-            {buttonStateCheck('favorites', movie) ? (
+            {buttonStateCheck("favorites", movie) ? (
               <Button
                 variant="outline-light"
                 size="sm"
                 className=" mt-4 mb-4 border-0"
                 onClick={handleRemoveFavorite}
                 style={{
-                  maxWidth: '37px',
-                  maxHeight: '29.25px',
-                  whiteSpace: 'nowrap',
+                  maxWidth: "37px",
+                  maxHeight: "29.25px",
+                  whiteSpace: "nowrap",
                 }}
               >
                 <>
@@ -121,50 +129,49 @@ const TableRowComponent = (props: RowProps): JSX.Element => {
                     icon={minus}
                     className="text-dark bg-light"
                     style={{
-                      borderRadius: '20px',
-                      marginLeft: '-9px',
+                      borderRadius: "20px",
+                      marginLeft: "-9px",
                     }}
                   />
                 </>
-                <FadingTypographyComponent
+                {/* <FadingTypographyComponent
                   textValue="added to favorites"
                   hide={hideFavorite}
-                />
+                /> */}
               </Button>
             ) : (
-              // w 37 h 29.25 PX
               <Button
                 variant="outline-light"
                 size="sm"
                 className="mt-4 mb-4 border-0"
                 onClick={handleAddFavorite}
                 style={{
-                  maxWidth: '37px',
-                  maxHeight: '29.25px',
-                  whiteSpace: 'nowrap',
+                  maxWidth: "37px",
+                  maxHeight: "29.25px",
+                  whiteSpace: "nowrap",
                 }}
               >
                 <FontAwesomeIcon size="xl" icon={heartOutlined} />
-                <FadingTypographyComponent
+                {/* <FadingTypographyComponent
                   textValue="added to favorites"
                   hide={hideFavorite}
-                />
+                /> */}
               </Button>
             )}
           </Container>
         </td>
-        <td className="border-0" style={{ paddingRight: '1rem' }}>
+        <td className="border-0" style={{ paddingRight: "1rem" }}>
           <Container className="mt-4 mb-4">
-            {buttonStateCheck('watchlist', movie) ? (
+            {buttonStateCheck("watchlist", movie) ? (
               <Button
                 variant="outline-light"
                 size="sm"
                 className="mt-4 mb-4 border-0"
                 onClick={handleRemoveWatchlist}
                 style={{
-                  maxWidth: '37px',
-                  maxHeight: '29.25px',
-                  whiteSpace: 'nowrap',
+                  maxWidth: "37px",
+                  maxHeight: "29.25px",
+                  whiteSpace: "nowrap",
                 }}
               >
                 <>
@@ -173,15 +180,15 @@ const TableRowComponent = (props: RowProps): JSX.Element => {
                     icon={minus}
                     className="text-dark bg-light"
                     style={{
-                      borderRadius: '20px',
-                      marginLeft: '-9px',
+                      borderRadius: "20px",
+                      marginLeft: "-9px",
                     }}
                   />
                 </>
-                <FadingTypographyComponent
+                {/* <FadingTypographyComponent
                   textValue="added to watchlist"
                   hide={hideWatchlist}
-                />
+                /> */}
               </Button>
             ) : (
               <Button
@@ -190,16 +197,16 @@ const TableRowComponent = (props: RowProps): JSX.Element => {
                 className="mt-4 mb-4 border-0"
                 onClick={handleAddWatchlist}
                 style={{
-                  maxWidth: '37px',
-                  maxHeight: '29.25px',
-                  whiteSpace: 'nowrap',
+                  maxWidth: "37px",
+                  maxHeight: "29.25px",
+                  whiteSpace: "nowrap",
                 }}
               >
                 <FontAwesomeIcon size="xl" icon={eyeOutlined} />
-                <FadingTypographyComponent
+                {/* <FadingTypographyComponent
                   textValue="added to watchlist"
                   hide={hideWatchlist}
-                />
+                /> */}
               </Button>
             )}
           </Container>

@@ -4,7 +4,9 @@ import React, {
   useCallback,
   useContext,
   createContext,
-} from 'react';
+} from "react";
+
+import userListReducer from "../hooks/reducer/userListReducer";
 
 export type MovieObject = {
   title: string;
@@ -17,78 +19,41 @@ export type MovieObject = {
   watchlist?: boolean;
 };
 
-type UserListStateType = {
+export type UserListStateType = {
   favorites: MovieObject[];
   watchlist: MovieObject[];
 };
+
+type DetailsPageType = {
+  movie: MovieObject;
+};
+
+export const enum REDUCER_ACTION_TYPE {
+  ADD_TO_WATCHLIST,
+  ADD_TO_FAVORITES,
+  REMOVE_FROM_WATCHLIST,
+  REMOVE_FROM_FAVORITES,
+  SEND_TO_DETAILS,
+}
 
 export const initialUserListState: UserListStateType = {
   favorites: [],
   watchlist: [],
 };
 
-// Reducer
-const enum REDUCER_ACTION_TYPE {
-  ADD_TO_WATCHLIST,
-  ADD_TO_FAVORITES,
-  REMOVE_FROM_WATCHLIST,
-  REMOVE_FROM_FAVORITES,
-}
-
-type UserListReducerAction = {
-  type: REDUCER_ACTION_TYPE;
-  payload: MovieObject;
+export const initialDetailsPageState: DetailsPageType = {
+  movie: {
+    title: "The Mockening Movie",
+    release_date: "2020-20-20",
+    poster_path: "/mockURLmOcKuRl",
+    vote_average: 5.5,
+    id: 1337,
+    overview:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio necessit",
+  },
 };
 
-const userListReducer = (
-  state: UserListStateType,
-  action: UserListReducerAction
-): UserListStateType => {
-  switch (action.type) {
-    // Favorites Add & Remove
-    case REDUCER_ACTION_TYPE.ADD_TO_FAVORITES: {
-      if (state.favorites.find((movie) => movie.id === action.payload.id)) {
-        return state;
-      }
-      return {
-        ...state,
-        favorites: [action.payload, ...state.favorites],
-      };
-    }
-    case REDUCER_ACTION_TYPE.REMOVE_FROM_FAVORITES: {
-      return {
-        ...state,
-        favorites: state.favorites.filter(
-          (movie) => movie.id !== action.payload.id
-        ),
-      };
-    }
-    // Watchlist Add & Remove
-    case REDUCER_ACTION_TYPE.ADD_TO_WATCHLIST: {
-      if (state.watchlist.find((movie) => movie.id === action.payload.id)) {
-        return state;
-      }
-
-      return {
-        ...state,
-        watchlist: [action.payload, ...state.watchlist],
-      };
-    }
-    case REDUCER_ACTION_TYPE.REMOVE_FROM_WATCHLIST: {
-      return {
-        ...state,
-        watchlist: state.watchlist.filter(
-          (movie) => movie.id !== action.payload.id
-        ),
-      };
-    }
-    default:
-      console.error('An error occurred');
-      return state;
-  }
-};
-
-// Context & Hooks
+// Context
 const useUserListContext = (initialUserListState: UserListStateType) => {
   const [state, dispatch] = useReducer(userListReducer, initialUserListState);
 
