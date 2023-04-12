@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 
 //Components used in tests
 import App from "../App";
-import Table from "react-bootstrap/esm/Table";
+import { Table } from "react-bootstrap";
 import TableRowComponent from "../components/TableRowComponent";
 import NavbarComponent from "../components/NavbarComponent";
 // Types used in tests

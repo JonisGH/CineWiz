@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import Container from "react-bootstrap/esm/Container";
-import NavbarBrand from "react-bootstrap/esm/NavbarBrand";
-import Navbar from "react-bootstrap/esm/Navbar";
+import { Container, NavbarBrand, Navbar, Button } from "react-bootstrap";
 
 import SideBarComponent from "./SideBarComponent";
 
-import Button from "react-bootstrap/esm/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome/index";
 import { faFilm } from "@fortawesome/free-solid-svg-icons";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
@@ -24,7 +21,7 @@ const NavbarComponent = (): JSX.Element => {
         <Container
           style={{ transition: "margin-right .5s", paddingRight: "20px" }}
         >
-          <NavbarBrand href="/">
+          <NavbarBrand href="/home">
             <FontAwesomeIcon icon={faFilm} /> CineWiz
           </NavbarBrand>
           <Button

@@ -1,8 +1,6 @@
 import React from "react";
 
-import Offcanvas from "react-bootstrap/esm/Offcanvas";
-import Table from "react-bootstrap/esm/Table";
-import Button from "react-bootstrap/esm/Button";
+import { Offcanvas, Table, Button } from "react-bootstrap";
 
 // icon imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome/index";

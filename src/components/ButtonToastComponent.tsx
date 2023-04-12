@@ -1,5 +1,5 @@
 import React from "react";
-import { Toast } from "react-bootstrap/esm/index";
+import { Toast } from "react-bootstrap";
 
 type Props = {
   toastMessage: string;

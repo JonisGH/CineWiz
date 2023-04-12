@@ -1,13 +1,13 @@
 import React, { useState, ChangeEvent } from "react";
 import useDebounce from "../hooks/useDebounce";
 
-import Table from "react-bootstrap/esm/Table";
-import Container from "react-bootstrap/esm/Container";
+import { Table, Container } from "react-bootstrap";
 
 import useFetchData from "../hooks/useFetchData";
 
 import SearchBar from "../components/SearchBarComponent";
 import TableRowComponent from "../components/TableRowComponent";
+import { NavigateFunction } from "react-router";
 
 interface Props {}
 

@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-
 // icon imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome/index";
 import {
@@ -14,14 +12,13 @@ import {
   faEye as eyeOutlined,
 } from "@fortawesome/free-regular-svg-icons/index";
 
-import Button from "react-bootstrap/esm/Button";
-import Container from "react-bootstrap/esm/Container";
+import { Button, Container } from "react-bootstrap";
 
 // Not sure if i should use this for feedback or keep it out
 // import FadingTypographyComponent from "./FadingTypographyComponent";
 
 import { MovieObject, useManageUserLists } from "../context/appContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 type RowProps = {
   movie: MovieObject;
@@ -80,8 +77,9 @@ const TableRowComponent = (props: RowProps): JSX.Element => {
 
   return (
     <>
-      <tr onClick={() => navigate("details", { state: movie })}>
+      <tr>
         <td
+          onClick={() => navigate("details", { state: movie })}
           className="d-none d-lg-table-cell border-0"
           style={{ maxHeight: "3rem", maxWidth: "3rem" }}
         >
@@ -91,7 +89,11 @@ const TableRowComponent = (props: RowProps): JSX.Element => {
             style={{ maxHeight: "100%", maxWidth: "100%" }}
           />
         </td>
-        <td className="border-0" style={{ paddingLeft: "1rem" }}>
+        <td
+          onClick={() => navigate("details", { state: movie })}
+          className="border-0"
+          style={{ paddingLeft: "1rem" }}
+        >
           <div className="mt-4 mb-4">
             <p>{movie.title}</p>
             <small style={{ color: "GrayText" }}>
@@ -99,8 +101,11 @@ const TableRowComponent = (props: RowProps): JSX.Element => {
             </small>
           </div>
         </td>
-        <td></td>
-        <td className="border-0">
+
+        <td
+          onClick={() => navigate("details", { state: movie })}
+          className="border-0"
+        >
           <div className="mt-4 mb-4">
             <small style={{ color: "GrayText" }}>TMDB rating</small>
             &nbsp;

@@ -1,10 +1,6 @@
 import React, { ChangeEvent, Dispatch, SetStateAction, useEffect } from "react";
 
-import FormGroup from "react-bootstrap/esm/FormGroup";
-import FormControl from "react-bootstrap/esm/FormControl";
-import FormText from "react-bootstrap/esm/FormText";
-
-import Container from "react-bootstrap/esm/Container";
+import { FormGroup, FormControl, FormText, Container } from "react-bootstrap";
 
 type SearchBarProps = {
   searchInput?: string;

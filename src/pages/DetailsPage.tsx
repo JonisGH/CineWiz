@@ -1,6 +1,5 @@
 import React from "react";
-import Card from "react-bootstrap/esm/Card";
-import { Container, Button } from "react-bootstrap/esm/index";
+import { Container, Button, Card } from "react-bootstrap";
 
 // icon imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome/index";
@@ -29,7 +28,7 @@ function DetailsPage(): React.ReactElement {
               <Button
                 role="button"
                 variant="outline-light"
-                href="/"
+                href="/home"
                 style={{
                   border: "none",
                   fontWeight: "bold",
@@ -65,12 +64,11 @@ function DetailsPage(): React.ReactElement {
             <Card.Text>{state.overview}</Card.Text>
           </Card.Body>
           <br />
-          <Card.Footer>
-            {" "}
+          <Card.Footer style={{ paddingBottom: "2rem" }}>
             <Button
               role="button"
               variant="outline-light"
-              href="/"
+              href="/home"
               style={{
                 border: "none",
                 fontWeight: "bold",
